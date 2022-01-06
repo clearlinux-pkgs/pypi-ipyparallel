@@ -1,0 +1,12 @@
+8.1.0
+pypi(decorator)
+pypi(entrypoints)
+pypi(ipykernel)
+pypi(ipython)
+pypi(jupyter_client)
+pypi(psutil)
+pypi(python_dateutil)
+pypi(pyzmq)
+pypi(tornado)
+pypi(tqdm)
+pypi(traitlets)

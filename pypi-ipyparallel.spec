@@ -4,7 +4,7 @@
 #
 Name     : pypi-ipyparallel
 Version  : 8.2.1
-Release  : 6
+Release  : 7
 URL      : https://files.pythonhosted.org/packages/91/7b/635c2281cb4f68364aa706e0d8a779c2114114fb9873cc0378ebc9b3f35d/ipyparallel-8.2.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/91/7b/635c2281cb4f68364aa706e0d8a779c2114114fb9873cc0378ebc9b3f35d/ipyparallel-8.2.1.tar.gz
 Summary  : Interactive Parallel Computing with IPython
@@ -101,7 +101,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1649034556
+export SOURCE_DATE_EPOCH=1649765848
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

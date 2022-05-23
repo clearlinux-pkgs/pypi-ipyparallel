@@ -4,7 +4,7 @@
 #
 Name     : pypi-ipyparallel
 Version  : 8.3.0
-Release  : 8
+Release  : 9
 URL      : https://files.pythonhosted.org/packages/2a/c9/6e1bef0aef78b3db6e2070d2c9a25d3184e74fad76a919ff6b82de8a1970/ipyparallel-8.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/2a/c9/6e1bef0aef78b3db6e2070d2c9a25d3184e74fad76a919ff6b82de8a1970/ipyparallel-8.3.0.tar.gz
 Summary  : Interactive Parallel Computing with IPython
@@ -82,13 +82,16 @@ python3 components for the pypi-ipyparallel package.
 %prep
 %setup -q -n ipyparallel-8.3.0
 cd %{_builddir}/ipyparallel-8.3.0
+pushd ..
+cp -a ipyparallel-8.3.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652106190
+export SOURCE_DATE_EPOCH=1653337618
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -99,6 +102,15 @@ export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 -m build --wheel --skip-dependency-check --no-isolation
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+python3 -m build --wheel --skip-dependency-check --no-isolation
+
+popd
 
 %install
 export MAKEFLAGS=%{?_smp_mflags}
@@ -109,10 +121,19 @@ pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+pip install --root=%{buildroot}-v3 --no-deps --ignore-installed dist/*.whl
+popd
 ## Remove excluded files
 rm -f %{buildroot}*/usr/etc/jupyter/jupyter_notebook_config.d/ipyparallel.json
 rm -f %{buildroot}*/usr/etc/jupyter/jupyter_server_config.d/ipyparallel.json
 rm -f %{buildroot}*/usr/etc/jupyter/nbconfig/tree.d/ipyparallel.json
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)

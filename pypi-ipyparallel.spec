@@ -4,7 +4,7 @@
 #
 Name     : pypi-ipyparallel
 Version  : 8.3.0
-Release  : 9
+Release  : 10
 URL      : https://files.pythonhosted.org/packages/2a/c9/6e1bef0aef78b3db6e2070d2c9a25d3184e74fad76a919ff6b82de8a1970/ipyparallel-8.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/2a/c9/6e1bef0aef78b3db6e2070d2c9a25d3184e74fad76a919ff6b82de8a1970/ipyparallel-8.3.0.tar.gz
 Summary  : Interactive Parallel Computing with IPython
@@ -91,7 +91,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1653337618
+export SOURCE_DATE_EPOCH=1656526743
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -103,8 +103,8 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 -m build --wheel --skip-dependency-check --no-isolation
 pushd ../buildavx2/
-export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx"
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx "
 export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
@@ -133,7 +133,7 @@ popd
 rm -f %{buildroot}*/usr/etc/jupyter/jupyter_notebook_config.d/ipyparallel.json
 rm -f %{buildroot}*/usr/etc/jupyter/jupyter_server_config.d/ipyparallel.json
 rm -f %{buildroot}*/usr/etc/jupyter/nbconfig/tree.d/ipyparallel.json
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)

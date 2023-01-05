@@ -1,5 +1,5 @@
 PKG_NAME := pypi-ipyparallel
-URL = https://files.pythonhosted.org/packages/2a/c9/6e1bef0aef78b3db6e2070d2c9a25d3184e74fad76a919ff6b82de8a1970/ipyparallel-8.3.0.tar.gz
+URL = https://files.pythonhosted.org/packages/6d/ce/644d81cbeeeb5bd5ba330455f393384d3389b2e1fa3703063591ba1f2054/ipyparallel-8.4.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

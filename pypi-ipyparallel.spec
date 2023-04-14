@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-ipyparallel
-Version  : 8.6.0
-Release  : 22
-URL      : https://files.pythonhosted.org/packages/49/98/bbd8c593ad878e8681542996cfa827034690724e7dfefd2e2dea6acfc28d/ipyparallel-8.6.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/49/98/bbd8c593ad878e8681542996cfa827034690724e7dfefd2e2dea6acfc28d/ipyparallel-8.6.0.tar.gz
+Version  : 8.6.1
+Release  : 23
+URL      : https://files.pythonhosted.org/packages/f0/88/d1cf7f462ecda78dcbccec4df3fc5ab504770cd67f199fca8662d7036634/ipyparallel-8.6.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/f0/88/d1cf7f462ecda78dcbccec4df3fc5ab504770cd67f199fca8662d7036634/ipyparallel-8.6.1.tar.gz
 Summary  : Interactive Parallel Computing with IPython
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -101,10 +101,10 @@ python3 components for the pypi-ipyparallel package.
 
 
 %prep
-%setup -q -n ipyparallel-8.6.0
-cd %{_builddir}/ipyparallel-8.6.0
+%setup -q -n ipyparallel-8.6.1
+cd %{_builddir}/ipyparallel-8.6.1
 pushd ..
-cp -a ipyparallel-8.6.0 buildavx2
+cp -a ipyparallel-8.6.1 buildavx2
 popd
 
 %build
@@ -112,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681404982
+export SOURCE_DATE_EPOCH=1681484771
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -172,7 +172,7 @@ rm -f %{buildroot}*/usr/etc/jupyter/nbconfig/tree.d/ipyparallel.json
 /usr/share/jupyter/labextensions/ipyparallel-labextension/schemas/ipyparallel-labextension/plugin.json
 /usr/share/jupyter/labextensions/ipyparallel-labextension/static/114.b63b1cb1deb6ab07694a.js
 /usr/share/jupyter/labextensions/ipyparallel-labextension/static/592.2265e4df71d8ba0dbbf6.js
-/usr/share/jupyter/labextensions/ipyparallel-labextension/static/remoteEntry.1bb490d7217e637c4abe.js
+/usr/share/jupyter/labextensions/ipyparallel-labextension/static/remoteEntry.f5bc00ef0248261af0b1.js
 /usr/share/jupyter/labextensions/ipyparallel-labextension/static/style.js
 /usr/share/jupyter/labextensions/ipyparallel-labextension/static/third-party-licenses.json
 /usr/share/jupyter/nbextensions/ipyparallel/clusterlist.css

@@ -7,7 +7,7 @@
 #
 Name     : pypi-ipyparallel
 Version  : 8.8.0
-Release  : 28
+Release  : 29
 URL      : https://files.pythonhosted.org/packages/60/63/b6ebb112f1605fdfcda33e8ab8a54ce3ca494ba20718c8397520fc556be1/ipyparallel-8.8.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/60/63/b6ebb112f1605fdfcda33e8ab8a54ce3ca494ba20718c8397520fc556be1/ipyparallel-8.8.0.tar.gz
 Summary  : Interactive Parallel Computing with IPython

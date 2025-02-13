@@ -7,7 +7,7 @@
 #
 Name     : pypi-ipyparallel
 Version  : 9.0.0
-Release  : 30
+Release  : 31
 URL      : https://files.pythonhosted.org/packages/d4/f6/05e91119bad61b9e10f8fdce687a93d50c372646e0a5332c19bc251faaf0/ipyparallel-9.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/d4/f6/05e91119bad61b9e10f8fdce687a93d50c372646e0a5332c19bc251faaf0/ipyparallel-9.0.0.tar.gz
 Summary  : Interactive Parallel Computing with IPython
